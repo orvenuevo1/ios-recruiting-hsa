@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD49DE172AE1EE6700A677EB /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AD49DE162AE1EE6700A677EB /* KeychainSwift */; };
+		AD49DE1E2AE1EFE800A677EB /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD49DE1D2AE1EFE800A677EB /* KeychainManager.swift */; };
 		ADE7D9D22AE1E7BE00D06BBC /* movieAppAccenApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE7D9D12AE1E7BE00D06BBC /* movieAppAccenApp.swift */; };
 		ADE7D9D42AE1E7BE00D06BBC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE7D9D32AE1E7BE00D06BBC /* ContentView.swift */; };
 		ADE7D9D62AE1E7BF00D06BBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADE7D9D52AE1E7BF00D06BBC /* Assets.xcassets */; };
@@ -14,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD49DE1D2AE1EFE800A677EB /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		ADE7D9CE2AE1E7BE00D06BBC /* movieAppAccen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = movieAppAccen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADE7D9D12AE1E7BE00D06BBC /* movieAppAccenApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieAppAccenApp.swift; sourceTree = "<group>"; };
 		ADE7D9D32AE1E7BE00D06BBC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,12 +29,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD49DE172AE1EE6700A677EB /* KeychainSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD49DE182AE1EF3600A677EB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AD49DE1A2AE1EF4E00A677EB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AD49DE1D2AE1EFE800A677EB /* KeychainManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AD49DE1B2AE1EF5700A677EB /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		AD49DE1C2AE1EFAB00A677EB /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
 		ADE7D9C52AE1E7BE00D06BBC = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +84,10 @@
 		ADE7D9D02AE1E7BE00D06BBC /* movieAppAccen */ = {
 			isa = PBXGroup;
 			children = (
+				AD49DE1C2AE1EFAB00A677EB /* Workers */,
+				AD49DE1B2AE1EF5700A677EB /* Scenes */,
+				AD49DE1A2AE1EF4E00A677EB /* Services */,
+				AD49DE182AE1EF3600A677EB /* Models */,
 				ADE7D9D12AE1E7BE00D06BBC /* movieAppAccenApp.swift */,
 				ADE7D9D32AE1E7BE00D06BBC /* ContentView.swift */,
 				ADE7D9D52AE1E7BF00D06BBC /* Assets.xcassets */,
@@ -83,6 +120,9 @@
 			dependencies = (
 			);
 			name = movieAppAccen;
+			packageProductDependencies = (
+				AD49DE162AE1EE6700A677EB /* KeychainSwift */,
+			);
 			productName = movieAppAccen;
 			productReference = ADE7D9CE2AE1E7BE00D06BBC /* movieAppAccen.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +151,9 @@
 				Base,
 			);
 			mainGroup = ADE7D9C52AE1E7BE00D06BBC;
+			packageReferences = (
+				AD49DE152AE1EE6700A677EB /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
 			productRefGroup = ADE7D9CF2AE1E7BE00D06BBC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADE7D9D42AE1E7BE00D06BBC /* ContentView.swift in Sources */,
+				AD49DE1E2AE1EFE800A677EB /* KeychainManager.swift in Sources */,
 				ADE7D9D22AE1E7BE00D06BBC /* movieAppAccenApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +388,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD49DE152AE1EE6700A677EB /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 20.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD49DE162AE1EE6700A677EB /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD49DE152AE1EE6700A677EB /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADE7D9C62AE1E7BE00D06BBC /* Project object */;
 }
