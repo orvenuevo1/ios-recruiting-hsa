@@ -7,4 +7,5 @@
 
 protocol MoviesDisplayLogic {
     func displayFetchedMovies(viewModel: Movies.FetchMovies.ViewModel)
+    func displayError(message: String)
 }

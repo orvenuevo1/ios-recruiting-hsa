@@ -22,6 +22,7 @@ enum Movies {
                 let id: Int
                 let title: String
                 let overview: String
+                let genreIds: [Int]
                 let releaseDate: String
                 let posterPath: String?
             }

@@ -8,7 +8,10 @@
 import Foundation
 
 class MovieViewModel: ObservableObject, MoviesDisplayLogic {
+    
     @Published var displayedMovies: [Movies.FetchMovies.ViewModel.DisplayedMovie] = []
+    @Published var errorMessage: String = ""
+    @Published var showErrorAlert: Bool = false
     var interactor: MoviesBusinessLogic?
     var presenter: MoviesPresentationLogic?
     
@@ -28,5 +31,10 @@ class MovieViewModel: ObservableObject, MoviesDisplayLogic {
 
     func displayFetchedMovies(viewModel: Movies.FetchMovies.ViewModel) {
         displayedMovies = viewModel.displayedMovies
+    }
+    
+    func displayError(message: String) {
+        self.errorMessage = message
+        self.showErrorAlert = true
     }
 }
