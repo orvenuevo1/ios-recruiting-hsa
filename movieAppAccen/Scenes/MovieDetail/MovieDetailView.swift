@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MovieDetailView: View {
     var movie: Movies.FetchMovies.ViewModel.DisplayedMovie
-
+    @State private var isFavorite: Bool = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Image(movie.posterPath ?? "placeholderImage")
@@ -20,9 +21,14 @@ struct MovieDetailView: View {
                 Text(movie.title)
                 Spacer()
                 Button(action: {
-                    print("favorito ",movie.title)
+                    if isFavorite {
+                        FavoriteMovieManager().removeFavorite(by: movie.id)
+                    } else {
+                        FavoriteMovieManager().addFavorite(movie: movie)
+                    }
+                    isFavorite.toggle()
                 }) {
-                    Image(systemName: true ? "heart.fill" : "heart")
+                    Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.system(size: 25))
                     // .foregroundColor(Color("mostaza"))
                         .padding(.trailing, 5)
@@ -40,5 +46,8 @@ struct MovieDetailView: View {
             Spacer()
         }
         .padding()
+        .onAppear {
+            isFavorite = FavoriteMovieManager().isFavorite(movieId: movie.id)
+        }
     }
 }

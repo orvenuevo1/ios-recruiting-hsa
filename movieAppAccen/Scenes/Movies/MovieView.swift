@@ -10,28 +10,24 @@ import SwiftUI
 struct MovieView: View {
     @ObservedObject var viewModel: MovieViewModel
     @State private var searchText = ""
-
+    
     var body: some View {
-            NavigationView {
-                VStack {
-                    SearchBarView()
-
-                    ScrollView {
-                        let columns: [GridItem] = Array(repeating: .init(.flexible()), count: UIScreen.main.bounds.width < 600 ? 2 : 3)
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(viewModel.displayedMovies) { movie in
-                                MovieCardView(movie: movie)
-                            }
+        NavigationView {
+            VStack {
+                SearchBarView()
+                
+                ScrollView {
+                    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: UIScreen.main.bounds.width < 600 ? 2 : 3)
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        ForEach(viewModel.displayedMovies) { movie in
+                            MovieCardView(movie: movie)
                         }
-                        .padding()
                     }
-                    
-                    Spacer()
-
-                    TabBarView()
+                    .padding()
                 }
-                .onAppear(perform: viewModel.fetchMovies)
-                .navigationTitle("Movies")
             }
+            .onAppear(perform: viewModel.fetchMovies)
+            .navigationTitle("Movies")
         }
+    }
 }

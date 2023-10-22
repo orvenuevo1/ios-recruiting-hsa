@@ -22,7 +22,3 @@ struct SearchBarView: View {
         }
     }
 }
-
-#Preview {
-    SearchBarView()
-}
