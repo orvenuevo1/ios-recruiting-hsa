@@ -8,17 +8,21 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    @State private var searchText = ""
-
+    @Binding var searchText: String
+    
     var body: some View {
-        HStack {
-            TextField("Search", text: $searchText)
+        ZStack {
+            if searchText.isEmpty {
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    Text("Search")
+                }
+            }
+            TextField("", text: $searchText)
                 .padding(12)
                 .background(Color.gray.opacity(0.2))
                 .cornerRadius(8)
                 .padding(.horizontal)
-            Image(systemName: "magnifyingglass")
-                .padding(.trailing)
         }
     }
 }
