@@ -12,17 +12,22 @@ struct FavoriteCardMovieView: View {
 
     var body: some View {
         HStack(spacing: 10) {
-            Image("placeholderImage")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 80, height: 120)
-                .clipped()
+            
+            if let posterPath = movie.posterPath {
+                ImageView(url: posterPath).frame(width: 80, height: 120)
+            } else {
+                Image("defaultImage")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 80, height: 120)
+                    .clipped()
+            }
             
             VStack(alignment: .leading, spacing: 5) {
                 Text(movie.title ?? "")
                     .fontWeight(.bold)
                 
-                Text(dateFormatter.string(from: movie.releaseDate ?? Date()))
+                Text(dateFormatter.string(from: movie.releaseDate ?? Date()).split(separator: "-")[2])
                 
                 Text(movie.overview ?? "")
                     .lineLimit(2)
@@ -36,4 +41,3 @@ struct FavoriteCardMovieView: View {
         return formatter
     }
 }
-

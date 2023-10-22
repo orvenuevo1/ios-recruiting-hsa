@@ -13,10 +13,14 @@ struct MovieDetailView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Image(movie.posterPath ?? "placeholderImage")
-                            .resizable()
-                            .scaledToFit()
-                            .padding(.top, 20)
+            if let posterPath = movie.posterPath {
+                ImageView(url: posterPath)
+            } else {
+                Image("defaultImage")
+                    .resizable()
+                    .scaledToFit()
+                    .padding(.top, 20)
+            }
             HStack{
                 Text(movie.title)
                 Spacer()
@@ -30,12 +34,12 @@ struct MovieDetailView: View {
                 }) {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
                         .font(.system(size: 25))
-                    // .foregroundColor(Color("mostaza"))
+                        .foregroundColor(Color.black)
                         .padding(.trailing, 5)
                 }
             }
             Divider().background(Color.black)
-            Text(movie.releaseDate)
+            Text(movie.releaseDate.split(separator: "-")[0])
             Divider().background(Color.black)
             let genreNames = movie.genreIds.compactMap { GenreManager.shared.genre(forID: $0)?.name }
             if !genreNames.isEmpty {

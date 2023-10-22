@@ -14,24 +14,25 @@ struct MovieCardView: View {
     var body: some View {
         NavigationLink(destination: MovieDetailView(movie: movie)) {
             
-            VStack {
-                if movie.posterPath != nil {
-                    Image("placeholderImage")
-                        .resizable()
-                        .scaledToFit()
-                } else {
-                    Image("defaultImage")
-                        .resizable()
-                        .scaledToFit()
-                }
+            VStack(spacing: 0) {
                 Spacer()
+                HStack{
+                    if let posterPath = movie.posterPath {
+                        ImageView(url: posterPath).frame(height: 190)
+                    } else {
+                        Image("defaultImage")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 190)
+                    }
+                }
                 HStack {
                     Spacer()
                     
                     Text(movie.title)
                         .fontWeight(.medium)
                         .frame(height: 60)
-                    //.foregroundColor(Color("mostaza"))
+                        .foregroundColor(Color.black)
                     Spacer()
                     
                     Button(action: {
@@ -44,14 +45,13 @@ struct MovieCardView: View {
                     }) {
                         Image(systemName: isFavorite ? "heart.fill" : "heart")
                             .font(.system(size: 25))
-                        // .foregroundColor(Color("mostaza"))
+                            .foregroundColor(Color.black)
                             .padding(.trailing, 5)
                     }
                 }
                 .background(Color.gray)
             }
         }
-        .border(Color.black, width: 2)
         .frame(width: 180, height: 250)
         .onAppear {
             isFavorite = FavoriteMovieManager().isFavorite(movieId: movie.id)
